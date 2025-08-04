@@ -14,7 +14,78 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      feedback: {
+        Row: {
+          category: Database["public"]["Enums"]["feedback_category"]
+          comment: string
+          created_at: string
+          departure_date: string | null
+          flight_number: string | null
+          id: string
+          is_anonymous: boolean | null
+          passenger_email: string
+          passenger_name: string
+          rating: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category: Database["public"]["Enums"]["feedback_category"]
+          comment: string
+          created_at?: string
+          departure_date?: string | null
+          flight_number?: string | null
+          id?: string
+          is_anonymous?: boolean | null
+          passenger_email: string
+          passenger_name: string
+          rating: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: Database["public"]["Enums"]["feedback_category"]
+          comment?: string
+          created_at?: string
+          departure_date?: string | null
+          flight_number?: string | null
+          id?: string
+          is_anonymous?: boolean | null
+          passenger_email?: string
+          passenger_name?: string
+          rating?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          full_name: string | null
+          id: string
+          role: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          role?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          role?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +94,17 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      feedback_category:
+        | "check_in"
+        | "security"
+        | "immigration"
+        | "baggage"
+        | "facilities"
+        | "dining"
+        | "shopping"
+        | "cleanliness"
+        | "staff_service"
+        | "overall_experience"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +231,19 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      feedback_category: [
+        "check_in",
+        "security",
+        "immigration",
+        "baggage",
+        "facilities",
+        "dining",
+        "shopping",
+        "cleanliness",
+        "staff_service",
+        "overall_experience",
+      ],
+    },
   },
 } as const
